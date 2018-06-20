@@ -1,0 +1,15 @@
+## System and generated files
+.idea
+.DS_Store
+.sass-cache
+
+## Directories
+src/log/
+src/dist/
+src/node_modules/
+src/bower_components/
+
+## Files
+result.xml
+npm-debug.log
+resources/

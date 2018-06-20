@@ -1,0 +1,248 @@
+@import 'normalize';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700');
+
+$blue: #0B9DDA;
+$darkblue: #1E4B60;
+$green: #73B90D;
+
+$min-tablet-width: 650px;
+$min-desktop-width: 960px;
+
+$quote-box-width: 190;
+
+// Apply a natural box layout model to all elements
+// but allowing components to change
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+html {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    min-height: 1000px; /* Used for demo purposes */
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Header */
+.header {
+    align-items: center;
+    background-color: #FFF;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
+    display: flex;
+    flex-direction: row;
+    height: 63px;
+    padding: 10px 20px;
+    position: relative;
+    transition: .5s ease-in height;
+
+    @media screen and (min-width: $min-tablet-width){
+      padding: 10px #{$quote-box-width + 10}px 10px 20px;
+    }
+
+    &-wrapper {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    &--shrink {
+      @media screen and (min-width: $min-tablet-width){
+        height: 45px;
+
+        .logo {
+          width: 96px;
+        }
+
+        .support-sales-large {
+          display: none;
+        }
+        .support-sales-small {
+          display: flex;
+        }
+      }
+    }
+}
+
+/* Logo */
+.logo {
+    display: inline-block;
+    margin-right: auto;
+    transition: .5s ease-in-out width;
+    width: 96px;
+
+    @media screen and (min-width: $min-tablet-width) {
+      width: 150px;
+    }
+
+    &-wrapper {
+        @extend .col4;
+    }
+
+    > img { max-width: 100%; }
+}
+
+/* Quote */
+.quote {
+  align-items: center;
+  background-color: $green;
+  color: #FFF;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 100%;
+  margin-left: auto;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  justify-content: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: #{$quote-box-width}px;
+
+  > img {
+    height: 12px;
+    margin-left: 5px;
+ }
+}
+
+/* Support & Sales */
+.support-sales {
+  margin-left: auto;
+
+  &-large {
+    display: flex;
+  }
+
+  &-small {
+    display: none;
+  }
+
+  &-item {
+    display: inline-block;
+    height: 100%;
+    font-size: 18px;
+    margin-right: 20px;
+    text-transform: uppercase;
+
+    @media screen and (min-width: $min-desktop-width){
+      line-height: 1.8;
+    }
+
+    span {
+      display: block;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+
+      @media screen and (min-width: $min-desktop-width){
+        display: inline;
+      }
+    }
+    &--person {
+      align-items: center;
+      color: $darkblue;
+      display: inline-flex;
+      font-size: 12px;
+      font-style: italic;
+      line-height: 15px;
+      text-transform: none;
+
+      > img { margin-right: 10px; }
+    }
+    &--blue {
+      color: $blue;
+    }
+    &--green {
+      color: $green;
+    }
+  }
+}
+
+/* Mobile */
+.phone-icon {
+    text-align: center;
+
+    &-wrapper {
+        @extend .col4;
+        justify-content: center;
+    }
+
+    &__image {
+      background-color: $green;
+      border-radius: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      width: 30px;
+    }
+
+    &__text {
+        color: $darkblue;
+        font-size: 11px;
+    }
+
+    img {
+        width: 55%;
+    }
+}
+.hamburger {
+    display: block;
+    height: 34px;
+    width: 30px;
+
+    &-wrapper {
+        @extend .col4;
+        justify-content: flex-end;
+    }
+
+    &__text {
+        color: $darkblue;
+        font-size: 11px;
+    }
+
+    > span:not(.hamburger__text) {
+        background-color: $darkblue;
+        display: block;
+        height: 2px;
+        margin-bottom: 4px;
+        margin-left: 3px;
+        width: 23px;
+    }
+}
+
+/* Header Dropdown */
+.header-mobile-dropdown {
+    display: none;
+}
+
+.col4 {
+    display: flex;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    position: relative;
+}
+
+
+/* Helper Classes */
+.mobile {
+  @media screen and (min-width: $min-tablet-width) {
+    display: none;
+  }
+}
+
+.tablet {
+  display: none;
+
+  @media screen and (min-width: $min-tablet-width){
+    display: flex;
+  }
+}
+
+.small-text {
+  font-size: 12px;
+  text-transform: none;
+
+  @media screen and (min-width: $min-desktop-width) {
+    font-size: 15px;
+  }
+}
